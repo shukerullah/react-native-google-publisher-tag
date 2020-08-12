@@ -1,0 +1,33 @@
+{
+  "name": "react-native-google-publisher-tag",
+  "version": "0.0.1",
+  "description": "A react-native component for Google Publisher Tags using WebView",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "WebView",
+    "DoubleClick",
+    "Google",
+    "Publisher",
+    "Tag",
+    "Ad"
+  ],
+  "author": "Pir Shukarulalh Shah <shuker_rashdi@yahoo.com> (http://www.shukarullah.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shukerullah/react-native-google-publisher-tag/issues"
+  },
+  "homepage": "https://github.com/shukerullah/react-native-google-publisher-tag#readme",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-webview": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shukerullah/react-native-google-publisher-tag.git"
+  }
+}
