@@ -1,0 +1,1 @@
+# react-native-google-publisher-tag
