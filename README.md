@@ -61,6 +61,7 @@ import GooglePublisherTag from 'react-native-google-publisher-tag';
 <GooglePublisherTag
   adUnitId="/6499/example/APIDemo/Fluid"
   adUnitSize="[['fluid']]"
+  width={414}
   baseUrl="https://your-domain.com"
 />
 ```
@@ -94,6 +95,19 @@ Ad unit targeting can be used to target ads more granularly than ad units. _Corr
 | ------ | -------- |
 | string | Yes      |
 
+### width
+
+Width is not required but recommended for fluid and it effect only fluid size. By default its "100%".
+| TYPE | REQUIRED |
+| ------ | -------- |
+| number | No |
+
+### backgroundColor
+
+| TYPE   | REQUIRED |
+| ------ | -------- |
+| string | No       |
+
 ### onPress
 
 | TYPE     | REQUIRED |
@@ -103,50 +117,44 @@ Ad unit targeting can be used to target ads more granularly than ad units. _Corr
 ### impressionViewable
 
 _Reference: [googletag.events.ImpressionViewableEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.impressionviewableevent)_.
-
-| TYPE     | REQUIRED |
+| TYPE | REQUIRED |
 | -------- | -------- |
-| Function | No       |
+| Function | No |
 
 ### slotOnload
 
 _Reference: [googletag.events.SlotOnloadEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotonloadevent)_.
-
-| TYPE     | REQUIRED |
+| TYPE | REQUIRED |
 | -------- | -------- |
-| Function | No       |
+| Function | No |
 
 ### slotRenderEnded
 
 _Reference: [googletag.events.SlotRenderEndedEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent)_.
-
-| TYPE     | REQUIRED |
+| TYPE | REQUIRED |
 | -------- | -------- |
-| Function | No       |
+| Function | No |
 
 ### slotRequested
 
 _Reference: [googletag.events.SlotRequestedEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrequestedevent)_.
-
-| TYPE     | REQUIRED |
+| TYPE | REQUIRED |
 | -------- | -------- |
-| Function | No       |
+| Function | No |
 
 ### slotResponseReceived
 
 _Reference: [googletag.events.SlotResponseReceived](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotresponsereceived)_.
-
-| TYPE     | REQUIRED |
+| TYPE | REQUIRED |
 | -------- | -------- |
-| Function | No       |
+| Function | No |
 
 ### slotVisibilityChanged
 
 _Reference: [googletag.events.SlotVisibilityChangedEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotvisibilitychangedevent)_.
-
-| TYPE     | REQUIRED |
+| TYPE | REQUIRED |
 | -------- | -------- |
-| Function | No       |
+| Function | No |
 
 ### Follow me on Twitter: [@shukerullah](https://twitter.com/shukerullah)
 

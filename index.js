@@ -26,6 +26,7 @@ function getAdUnitTargeting(adUnitTargeting) {
 }
 
 type Props = {
+  width?: number,
   adUnitId: string,
   adUnitSize: string,
   adUnitTargeting: ?Object,
@@ -53,6 +54,7 @@ export default class GPT extends React.PureComponent<Props, State> {
   html;
 
   static defaultProps = {
+    width: "100%",
     impressionViewable: () => {},
     slotOnload: () => {},
     slotRenderEnded: () => {},
@@ -64,7 +66,7 @@ export default class GPT extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      width: "100%",
+      width: props.width,
       height: 0,
     };
 
