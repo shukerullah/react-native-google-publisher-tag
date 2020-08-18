@@ -47,7 +47,7 @@ import GooglePublisherTag from 'react-native-google-publisher-tag';
     interests: ['sports', 'music', 'movies'],
     key: ['value1', 'value2', 'value3'],
   }}
-  onLoad={() => {
+  slotOnload={() => {
     // TODO: Do something on load
   }}
   onPress={(url) => {
@@ -100,7 +100,49 @@ Ad unit targeting can be used to target ads more granularly than ad units. _Corr
 | -------- | -------- |
 | Function | No       |
 
-### onLoad
+### impressionViewable
+
+_Reference: [googletag.events.ImpressionViewableEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.impressionviewableevent)_.
+
+| TYPE     | REQUIRED |
+| -------- | -------- |
+| Function | No       |
+
+### slotOnload
+
+_Reference: [googletag.events.SlotOnloadEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotonloadevent)_.
+
+| TYPE     | REQUIRED |
+| -------- | -------- |
+| Function | No       |
+
+### slotRenderEnded
+
+_Reference: [googletag.events.SlotRenderEndedEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrenderendedevent)_.
+
+| TYPE     | REQUIRED |
+| -------- | -------- |
+| Function | No       |
+
+### slotRequested
+
+_Reference: [googletag.events.SlotRequestedEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotrequestedevent)_.
+
+| TYPE     | REQUIRED |
+| -------- | -------- |
+| Function | No       |
+
+### slotResponseReceived
+
+_Reference: [googletag.events.SlotResponseReceived](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotresponsereceived)_.
+
+| TYPE     | REQUIRED |
+| -------- | -------- |
+| Function | No       |
+
+### slotVisibilityChanged
+
+_Reference: [googletag.events.SlotVisibilityChangedEvent](https://developers.google.com/doubleclick-gpt/reference#googletag.events.slotvisibilitychangedevent)_.
 
 | TYPE     | REQUIRED |
 | -------- | -------- |
