@@ -31,7 +31,7 @@ type Props = {
   adUnitTargeting: ?Object,
   baseUrl: ?string,
   backgroundColor: ?string,
-  onPress?: Function,
+  onPress: ?Function,
   impressionViewable?: Function,
   slotOnload?: Function,
   slotRenderEnded?: Function,
@@ -53,7 +53,6 @@ export default class GPT extends React.PureComponent<Props, State> {
   html;
 
   static defaultProps = {
-    onPress: () => {},
     impressionViewable: () => {},
     slotOnload: () => {},
     slotRenderEnded: () => {},
