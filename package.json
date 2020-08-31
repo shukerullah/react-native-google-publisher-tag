@@ -1,6 +1,6 @@
 {
   "name": "react-native-google-publisher-tag",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A react-native component for Google Publisher Tags using WebView",
   "main": "index.js",
   "scripts": {
@@ -29,5 +29,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shukerullah/react-native-google-publisher-tag.git"
+  },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
   }
 }

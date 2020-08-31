@@ -1,8 +1,24 @@
 import React from "react";
 import { Linking } from "react-native";
+import debounce from "lodash.debounce";
 import { WebView, WebViewProps } from "react-native-webview";
 
 import publisher from "./publisher";
+
+function warn(...params) {
+  // eslint-disable-next-line no-console
+  console.warn(...params);
+}
+
+const _debounce = debounce((press, url) => {
+  if (press) {
+    press(url);
+  } else {
+    Linking.openURL(url).catch((er) => {
+      warn(er);
+    });
+  }
+}, 300);
 
 function getAdUnitTargeting(adUnitTargeting) {
   if (!adUnitTargeting) {
@@ -78,16 +94,47 @@ export default class GPT extends React.PureComponent<Props, State> {
     );
   }
 
-  _onNavigationChange = ({ url }) => {
+  _onShouldStartLoadWithRequest = (request) => {
+    if (!request || !request.url) {
+      return true;
+    }
+
+    if (request.url.startsWith("blob")) {
+      this._onPress(request.url);
+      return false;
+    }
+
+    if (request.url.startsWith("intent:")) {
+      this._onPress(request.url);
+      return false;
+    }
+
+    if (request.url.startsWith("https://adssettings.google.com/whythisad")) {
+      this._onPress(request.url);
+      return false;
+    }
+
+    if (
+      request.url.startsWith("tel:") ||
+      request.url.startsWith("mailto:") ||
+      request.url.startsWith("maps:") ||
+      request.url.startsWith("geo:") ||
+      request.url.startsWith("sms:")
+    ) {
+      this._onPress(request.url);
+      return false;
+    }
+    return true;
+  };
+
+  _onNavigationStateChange = ({ url }) => {
     if (!this.initialUrl) {
       this.initialUrl = url;
-    } else if (this.initialUrl !== url) {
+    }
+
+    if (url && url !== this.initialUrl) {
       this.webView.stopLoading();
-      if (this.props.onPress) {
-        this.props.onPress(url);
-      } else {
-        this._onPress(url);
-      }
+      this._onPress(url);
     }
   };
 
@@ -119,8 +166,13 @@ export default class GPT extends React.PureComponent<Props, State> {
 
       if (data.slotRenderEnded) {
         this.props.slotRenderEnded(data.slotRenderEnded);
-        const width = data.slotRenderEnded.size[0];
-        const height = data.slotRenderEnded.size[1];
+
+        let width = 0;
+        let height = 0;
+        if (data.slotRenderEnded.size && data.slotRenderEnded.size.length > 1) {
+          width = data.slotRenderEnded.size[0];
+          height = data.slotRenderEnded.size[1];
+        }
         const isFluid = width === 0 && height === 0;
         if (
           !isFluid &&
@@ -144,17 +196,13 @@ export default class GPT extends React.PureComponent<Props, State> {
       if (data.slotVisibilityChanged) {
         this.props.slotVisibilityChanged(data.slotVisibilityChanged);
       }
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e);
+    } catch (er) {
+      warn(er);
     }
   };
 
   async _onPress(url) {
-    const supported = await Linking.canOpenURL(url);
-    if (supported) {
-      await Linking.openURL(url);
-    }
+    _debounce(this.props.onPress, url);
   }
 
   render() {
@@ -179,7 +227,8 @@ export default class GPT extends React.PureComponent<Props, State> {
           baseUrl,
           html: this.html,
         }}
-        onNavigationStateChange={this._onNavigationChange}
+        onNavigationStateChange={this._onNavigationStateChange}
+        onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest}
       />
     );
   }
